@@ -1,13 +1,13 @@
 
 import { Request, Response, NextFunction } from 'express';
 
-import { AccountService } from '../../services/transaction'
+import { TransferService } from '../../services/transaction'
 
 
 class AccountController{
   constructor(
 
-    private readonly accountService: AccountService = new AccountService()
+    private readonly transferService: TransferService = new TransferService()
 
   ){
     this.create = this.create.bind(this)
@@ -18,7 +18,7 @@ class AccountController{
     try{
 
       const body = req.body;
-      let result = await this.accountService.transfer(body)
+      let result = await this.transferService.transfer(body)
       return res.customSuccess(200, {data:result})
 
     } catch (err) {

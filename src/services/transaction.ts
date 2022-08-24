@@ -1,4 +1,5 @@
 import axios from "axios";
+import { notificationModel } from "models/notification";
 import { UserModel } from "models/user";
 import moment from "moment";
 import { Service } from "typedi";
@@ -9,12 +10,8 @@ import { CustomError } from '../utils/response/custom-error/CustomError';
 
 
 
-
-
-
-
 @Service()
-export class AccountService {
+export class TransferService {
  
   async transfer(body: any ){
     
@@ -67,6 +64,8 @@ export class AccountService {
         status: body.status,
         
       }
+      await notificationModel.create(notification_payload);
+      
       return {message: "transfer successful"}
     } catch (err) {
     

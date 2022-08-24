@@ -8,7 +8,7 @@ import users from './transaction';
 const router = Router();
 
 router.use('/auth', auth);
-router.use('/virtual', users);
+router.use('/create', users);
 
 
 export default router;
