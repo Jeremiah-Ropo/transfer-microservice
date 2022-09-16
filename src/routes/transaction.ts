@@ -4,6 +4,8 @@ import AccountController from '../controllers/transaction/transfer'
 
 const router = Router();
 
-router.post("/transfer", AccountController.create)
+router.post("/virtualfee", AccountController.virtualAccountFee)
+router.post("/localfee", AccountController.localFee);
+
 
 export default router;

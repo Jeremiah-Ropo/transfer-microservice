@@ -10,21 +10,31 @@ class AccountController{
     private readonly transferService: TransferService = new TransferService()
 
   ){
-    this.create = this.create.bind(this)
+    this.localFee = this.localFee.bind(this)
+    this.virtualAccountFee = this.virtualAccountFee.bind(this)
     
   }
  
-  async create(req: Request, res: Response, next: NextFunction){
+  async localFee(req: Request, res: Response, next: NextFunction){
     try{
-
       const body = req.body;
-      let result = await this.transferService.transfer(body)
+      let result = await this.transferService.localFee(body)
       return res.customSuccess(200, {data:result})
-
     } catch (err) {
       return next(err);
     } 
   }
+
+  async virtualAccountFee(req:Request, res:Response, next:NextFunction){
+    try{
+      const body = req.body;
+      let result = await this.transferService.virtualAcccountFee(body)
+      return res.customSuccess(200, {data:result})
+    }catch(err){
+      return next(err);
+    }
+  }
+  
 
 }
 
