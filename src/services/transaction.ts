@@ -113,24 +113,16 @@ export class TransferService {
     try {
       if (query.amount <= 5000) {
         const getFee = await FeeModel.findOne({feeType:query.feeType, maxAmount:5000});
-        // console.log(getFee.fee)
         const fee = getFee.fee * parseFloat(query.amount)
-        // console.log(fee)
-
         return fee;
       }
       if (query.amount > 5001 && query.amount <= 50000) {
         const getFee = await FeeModel.findOne({feeType:query.feeType, maxAmount:50000, minAmount:5001})
-        console.log(getFee.fee)
-
         const fee = getFee.fee * parseFloat(query.amount)
-        console.log(fee)
-
         return fee;
       }
-      const getFee = await FeeModel.findOne({feeType:query.feeType, minAmount:50000})
-      // console.log(getFee.fee)
 
+      const getFee = await FeeModel.findOne({feeType:query.feeType, minAmount:50000})
       const fee = getFee.fee * parseFloat(query.amount)
       return fee
 
