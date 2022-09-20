@@ -1,14 +1,13 @@
 import { Router } from 'express';
 
-import auth from './auth';
 
-import users from './transaction';
+
+import fee from './transaction';
 
 
 const router = Router();
 
-router.use('/auth', auth);
-router.use('/create', users);
+router.use('/fee', fee);
 
 
 export default router;
